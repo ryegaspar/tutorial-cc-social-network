@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', [
-    'uses' => 'HomeController@index',
-    'as'   => 'home',
-]);
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/alert', function () {
-    return redirect()->route('home')->with('info', 'You have signed in');
-});
+Route::get('/signup', 'AuthController@getSignup')->name('auth.signup');
+Route::post('/signup', 'AuthController@postSignup');
+
+// test session info
+//Route::get('/alert', function () {
+//    return redirect()->route('home')->with('info', 'You have signed in');
+//});

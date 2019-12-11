@@ -25,7 +25,7 @@
                     <li class="nav-item"><a href="#" class="nav-link">Sign out</a>
                     </li>
                 @else
-                    <li class="nav-item"><a href="#" class="nav-link">Sign up</a>
+                    <li class="nav-item"><a href="{{ route('auth.signup') }}" class="nav-link">Sign up</a>
                     </li>
                     <li class="nav-item"><a href="#" class="nav-link">Sign in</a>
                     </li>

@@ -1,35 +1,32 @@
-<nav class="navbar navbar-light bg-light navbar-expand-md" role="navigation">
-    <div class="container"><a class="navbar-brand" href="#">Chatty</a>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Chatty</a>
+        </div>
         <div class="collapse navbar-collapse">
+        @if (Auth::check())
+            <ul class="nav navbar-nav">
+                <li><a href="#">Timeline</a></li>
+                <li><a href="#">Friends</a></li>
+            </ul>
+            <form class="navbar-form navbar-left" role="search" action="#">
+                <div class="form-group">
+                    <input type="text" name="query" class="form-control" placeholder="Find people">
+                </div>
+                <button type="submit" class="btn btn-default">Search</button>
+            </form>
+        @endif
+            <ul class="nav navbar-nav navbar-right">
             @if (Auth::check())
-                <ul class="nav navbar-nav">
-                    <li class="nav-item"><a href="#" class="nav-link">Timeline</a>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Friends</a>
-                    </li>
-                </ul>
-                <form class="form-inline " role="search" action="#">
-                    <div class="form-group">
-                        <input type="text" name="query" class="form-control" placeholder="Find people">
-                    </div>
-                    <button type="submit" class="btn btn-secondary">Search</button>
-                </form>
+                <li><a href="#">{{ Auth::user()->getNameOrUsername() }}
+                    </a>
+                </li>
+                <li><a href="#">Update profile</a></li>
+                <li><a href="#">Sign out</a></li>
+            @else
+                <li><a href="{{ route('auth.signup') }}">Sign up</a></li>
+                <li><a href="{{ route('auth.signin') }}">Sign in</a></li>
             @endif
-            <ul class="nav navbar-nav ml-auto">
-                @if (Auth::check())
-                    <li class="nav-item"><a href="#"
-                                            class="nav-link">Dayle {{-- Auth::user()-&gt;getNameOrUsername() }} --}}</a>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Update profile</a>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Sign out</a>
-                    </li>
-                @else
-                    <li class="nav-item"><a href="{{ route('auth.signup') }}" class="nav-link">Sign up</a>
-                    </li>
-                    <li class="nav-item"><a href="#" class="nav-link">Sign in</a>
-                    </li>
-                @endif
             </ul>
         </div>
     </div>

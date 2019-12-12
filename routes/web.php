@@ -26,6 +26,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/search', 'SearchController@getResults')->name('search.results');
 
     Route::get('/user/{username}', 'ProfileController@getProfile')->name('profile.index');
+
+    Route::get('/profile/edit', 'ProfileController@getEdit')->name('profile.edit');
+    Route::post('/profile/edit', 'ProfileController@postEdit');
 });
 // test session info
 //Route::get('/alert', function () {

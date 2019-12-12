@@ -4,10 +4,18 @@
     <div class="row">
         <div class="col-lg-5">
             @include('user.partials.userblock')
-            <hr />
+            <hr/>
         </div>
         <div class="col-lg-4 col-lg-offset-3">
-            <!-- Friends, friend requests -->
+            <h4>{{ $user->getFirstNameOrUsername() }}'s</h4>
+
+            @if (!$user->friends()->count())
+                <p>{{ $user->getFirstNameOrUsername() }} has no friends.</p>
+            @else
+                @foreach ($user->friends() as $user)
+                    @include('user/partials/userblock')
+                @endforeach
+            @endif
         </div>
     </div>
 @endsection

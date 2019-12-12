@@ -22,6 +22,8 @@ Route::middleware(['guest'])->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/signout', 'AuthController@getSignout')->name('auth.signout');
+
+    Route::get('/search', 'SearchController@getResults')->name('search.results');
 });
 // test session info
 //Route::get('/alert', function () {

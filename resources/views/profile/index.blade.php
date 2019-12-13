@@ -56,7 +56,7 @@
                                 </div>
                             @endforeach
 
-                            @if ($authUserIsFriend || Auth::user()->id === $status->user_id)
+                            @if ($authUserIsFriend || Auth::user()->id === $status->user->id)
                                 <form role="form"
                                       action="{{ route('status.reply', ['statusId' => $status->id]) }}"
                                       method="post">

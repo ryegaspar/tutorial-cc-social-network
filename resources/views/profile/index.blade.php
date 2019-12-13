@@ -98,6 +98,16 @@
                 </a>
             @elseif (Auth::user()->isFriendsWith($user))
                 <p>You and {{ $user->getNameOrUsername() }} are friends</p>
+
+                <form action="{{ route('friend.delete', ['username' => $user->username]) }}"
+                      method="post"
+                >
+                    @csrf
+                    <input type="submit"
+                           value="Delete friend"
+                           class="btn btn-primary"
+                    >
+                </form>
             @elseif (Auth::user()->id !== $user->id)
                 <a href="{{ route('friend.add', ['username' => $user->username]) }}"
                    class="btn btn-primary"

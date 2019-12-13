@@ -148,16 +148,21 @@ class User extends Authenticatable
 
     public function isFriendsWith(User $user)
     {
-        return (bool) $this->friends()
+        return (bool)$this->friends()
             ->where('id', $user->id)
             ->count();
     }
 
     public function hasLikedStatus(Status $status)
     {
+//        return (bool) $status->likes
+//            ->where('likeable_id', $status->id)
+//            ->where('likeable_type', get_class($status))
+//            ->where('user_id', $this->id)
+//            ->count();
+
+        // this is shorter
         return (bool) $status->likes
-            ->where('likeable_id', $status->id)
-            ->where('likeable_type', get_class($status))
             ->where('user_id', $this->id)
             ->count();
     }

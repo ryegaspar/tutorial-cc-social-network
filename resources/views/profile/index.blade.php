@@ -16,7 +16,7 @@
                     Accept friend request
                 </a>
             @elseif (Auth::user()->isFriendsWith($user))
-                <p>You and {{ $user->getNameOrUsername }} are friends</p>
+                <p>You and {{ $user->getNameOrUsername() }} are friends</p>
             @elseif (Auth::user()->id !== $user->id)
                 <a href="{{ route('friend.add', ['username' => $user->username]) }}"
                    class="btn btn-primary"

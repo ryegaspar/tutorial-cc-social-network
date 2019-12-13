@@ -29,6 +29,8 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/profile/edit', 'ProfileController@getEdit')->name('profile.edit');
     Route::post('/profile/edit', 'ProfileController@postEdit');
+
+    Route::get('/friends', 'FriendController@getIndex')->name('friend.index');
 });
 // test session info
 //Route::get('/alert', function () {
